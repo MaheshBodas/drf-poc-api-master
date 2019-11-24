@@ -7,11 +7,22 @@ Source code for the [DJango REST PoC Server][server].
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
 
 
-REST based API to for defining RiskTypes and Risk
+REST based API to for defining RiskTypes and Risk Instances based on RiskType
 
-  - Post RiskTypes and Risk
-  - Get RiskTypes, RiskTypeKeys, RiskKeys
-  - Get Single Risk, All Risks
+  - API allows users to create RiskTypes and associated RiskTypeFields
+in one go with use of nested serializer.
+  - During creation of Risk Instance system checks that proper referential integrity
+is maintained with Risk Type.
+  - While creation of Risk Fields system ensures that proper referential integrity is 
+  maintained with Risk and Risk Type fields.
+  - Risk API allows users to create Risk and associated RiskFields in one
+go with use of nested serializer.
+  - Various model validation errors in RiskType and RiskTypeFields, Risk
+and RiskFields are returned to client of serve API in JSON format.
+
+### For details of User guide refer following link
+- [User Guide](
+https://github.com/MaheshBodas/drf-poc-api-master/tree/master/blob/DRF PoC WebAPI Presentation.pdf)
 
 ### Installation
 
