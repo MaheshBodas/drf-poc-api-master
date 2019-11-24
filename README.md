@@ -21,7 +21,7 @@ go with use of nested serializer.
 and RiskFields are returned to client of serve API in JSON format.
 
 ### For details of User guide refer following links
-- [User Guide](https://github.com/MaheshBodas/drf-poc-api-master/tree/master/blob//DRF PoC WebAPI Presentation.pdf)
+- [User Guide](https://github.com/MaheshBodas/drf-poc-api-master/tree/master/blob/DRF PoC WebAPI Presentation.pdf)
 
 ### Installation
 
