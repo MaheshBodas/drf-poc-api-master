@@ -20,9 +20,8 @@ go with use of nested serializer.
   - Various model validation errors in RiskType and RiskTypeFields, Risk
 and RiskFields are returned to client of serve API in JSON format.
 
-### For details of User guide refer following link
-- [User Guide](
-https://github.com/MaheshBodas/drf-poc-api-master/tree/master/blob/DRF PoC WebAPI Presentation.pdf)
+### For details of User guide refer following links
+- [User Guide](https://github.com/MaheshBodas/drf-poc-api-master/tree/master/blob//DRF PoC WebAPI Presentation.pdf)
 
 ### Installation
 
