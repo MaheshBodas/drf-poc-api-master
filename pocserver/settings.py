@@ -27,7 +27,8 @@ SECRET_KEY = '^+%!mnsrflamqkz!)dv&7kxt%zct-^)_c41+e59nxx$#%r0z*u'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+# ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['.herokuapp.com', 'localhost', '127.0.0.1', '0.0.0.0']
 
 # Application definition
 
@@ -40,14 +41,14 @@ INSTALLED_APPS = [
     # Cross-Origin Resource Sharing
     'corsheaders',
     'whitenoise.runserver_nostatic',
-    'django.contrib.staticfiles',    
+    'django.contrib.staticfiles',
     # Filtering related    
     'django_filters',
     # Authentication related
     'rest_framework.authtoken',
     'rest_auth',
     'rest_framework',
-    'riskapi.apps.RiskApiConfig',
+    'chinookapi.apps.ChinookApiConfig',
 ]
 
 MIDDLEWARE = [
@@ -57,7 +58,7 @@ MIDDLEWARE = [
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     # To be used for only along with SessionAuthentication
-    # 'django.middleware.csrf.CsrfViewMiddleware',
+    'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
@@ -68,10 +69,10 @@ CORS_ALLOW_CREDENTIALS = True
 #CORS_ORIGIN_ALLOW_ALL = True
 
 CORS_ORIGIN_WHITELIST = (
-    'localhost:9528',
-    'localhost:5000',
-    'vuejs-poc-ui-maheshbodas.herokuapp.com',
-    'reactjs-poc-ui-master.herokuapp.com'
+    'http://localhost:9528',
+    'http://localhost:5000',
+    'http://vuejs-poc-ui-maheshbodas.herokuapp.com',
+    'http://reactjs-poc-ui-master.herokuapp.com'
 )
 
 TEMPLATES = [
@@ -92,16 +93,44 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'pocserver.wsgi.application'
 
-# Database
-# https://docs.djangoproject.com/en/1.11/ref/settings/#databases
-
-DATABASES = {
-    'default':
-    dj_database_url.config(
-        default='sqlite:///{}'.format(os.path.join(BASE_DIR, 'db.sqlite3'))
-    )
+DATABASES_Heroku_test = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'd2k08npritnqkq',
+        'USER': 'mzqftkgsfbxxwd',
+        'PASSWORD': '4d2034578aea24a83039579e71ca12a9f5b21392728353f1b4a265e4df42c3f7',
+        'HOST': 'ec2-184-72-236-57.compute-1.amazonaws.com',
+        'PORT': '5432',
+    }
 }
 
+
+# DATABASE_URL = os.environ.get('DATABASE_URL')
+# db_from_env = dj_database_url.config(default=DATABASE_URL, conn_max_age=500, ssl_require=True)
+# DATABASES['default'].update(db_from_env)
+
+DATABASES_Local = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'postgres',
+        'USER': 'postgres',
+        'PASSWORD': 'Madhuri#1',
+        'HOST': 'localhost',
+        'PORT': '5432',
+    }
+}
+
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'postgres',
+        'USER': 'postgres',
+        'PASSWORD': 'postgres',
+        'HOST': 'db',
+        'PORT': '5432',
+    }
+}
 # Password validation
 # https://docs.djangoproject.com/en/1.11/ref/settings/#auth-password-validators
 
@@ -148,15 +177,15 @@ REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': ['rest_framework.permissions.IsAuthenticated'],
     'DEFAULT_AUTHENTICATION_CLASSES': (
         # Only appropriate for javascript based clients that are running in the same site as the API
-        # 'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
         # For Client Server set up or while accessing API from other website use TokenAuthentication
-        'rest_framework.authentication.TokenAuthentication',         
+        # 'rest_framework.authentication.TokenAuthentication',
     ),
     'DEFAULT_FILTER_BACKENDS': (
         'django_filters.rest_framework.DjangoFilterBackend',
-    )    
+    ),
     # 'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
-    # 'PAGE_SIZE': 3,
+    # 'PAGE_SIZE': 10
 }
 
 if ENVIRONMENT == 'production':

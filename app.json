@@ -1,5 +1,5 @@
 {
-  "name": "britecore-poc-server",
+  "name": "chinook-poc-server",
   "scripts": {
     "postdeploy": "python manage.py migrate"
   },

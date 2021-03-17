@@ -25,7 +25,7 @@ schema_view = get_schema_view(title=API_TITLE)
 
 
 urlpatterns = [    
-    url(r'^', include('riskapi.urls')),
+    url(r'^', include('chinookapi.urls')),
     url(r'^auth/', include('rest_auth.urls')),    
     url(r'^admin/', admin.site.urls),
     url(r'^api-token-auth/', views.obtain_auth_token),

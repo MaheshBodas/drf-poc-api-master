@@ -1,13 +1,14 @@
 from django.conf.urls import include, url
-from riskapi import views
+from chinookapi import views
 from rest_framework.routers import DefaultRouter
 
 # Create a router and register our viewsets with it.
 router = DefaultRouter()
-router.register(r'risktypekeys', views.RiskTypeKeyViewSet, 'risktypekeys')
-router.register(r'riskkeys', views.RiskKeyViewSet, 'riskkeys')
-router.register(r'risktypes', views.RiskTypeViewSet)
-router.register(r'risks', views.RiskViewSet)
+# router.register(r'risktypekeys', views.RiskTypeKeyViewSet, 'risktypekeys')
+# router.register(r'riskkeys', views.RiskKeyViewSet, 'riskkeys')
+# router.register(r'risktypes', views.RiskTypeViewSet)
+# router.register(r'risks', views.RiskViewSet)
+router.register(r'tracks', views.TrackViewSet)
 router.register(r'users', views.UserViewSet)
 
 # The API URLs are now determined automatically by the router.
